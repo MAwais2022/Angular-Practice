@@ -1,0 +1,114 @@
+<div class="bg-light mt-2 w-50 m-auto p-5">
+  <div class="container mt-4">
+    <h1 class="text-center">Template Driven Form With Validation</h1>
+
+    <form #LoginForm="ngForm" (ngSubmit)="(LoginForm.valid)">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Name"
+          name="title"
+          id="title"
+          [(ngModel)]="form.title"
+          required
+          maxlength="10"
+          minlength="3"
+          #title="ngModel"
+          [ngClass]="{ error: title.errors && title.touched }"
+        />
+        <div *ngIf="title.errors && title.touched">
+          <small class="text-danger" *ngIf="title.errors['required']"
+            >First Name is required</small
+          >
+          <small class="text-danger" *ngIf="title.errors['minlength']"
+            >Minimum Length should be 3</small
+          >
+        </div>
+      </div>
+      <!--               title:'...',
+                    price:'...',
+                    category:'...',
+                    description:'...', -->
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Name"
+          name="price"
+          id="price"
+          [(ngModel)]="form.price"
+          required
+          maxlength="10"
+          minlength="3"
+          #price="ngModel"
+          [ngClass]="{ error: price.errors && price.touched }"
+        />
+        <div *ngIf="price.errors && price.touched">
+          <small class="text-danger" *ngIf="price.errors['required']"
+            >Last Name is required</small
+          >
+          <small class="text-danger" *ngIf="price.errors['minlength']"
+            >Minimum Length should be 3</small
+          >
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">category</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Name"
+          name="category"
+          id="category"
+          [(ngModel)]="form.category"
+          required="@"
+          maxlength="15"
+          minlength="5"
+          #category="ngModel"
+          [ngClass]="{ error: category.errors && category.touched }"
+        />
+        <div *ngIf="category.errors && category.touched">
+          <small class="text-danger" *ngIf="category.errors['required']"
+            >E-mail is required</small
+          >
+          <small class="text-danger" *ngIf="category.errors['minlength']"
+            >Minimum Length should be 5
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">description</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter description"
+          name="description"
+          id="description"
+          [(ngModel)]="form.description"
+          required
+          maxlength="8"
+          minlength="3"
+          #description="ngModel"
+          [ngClass]="{ error: description.errors && description.touched }"
+        />
+        <div *ngIf="description.errors && description.touched">
+          <small class="text-danger" *ngIf="description.errors['required']"
+            >description is required</small
+          >
+          <small class="text-danger" *ngIf="description.errors['minlength']"
+            >Minimum Length should be 3
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <input type="submit" (click)="userLogin()" class="btn btn-primary" />
+      </div>
+    </form>
+  </div>
+</div>
